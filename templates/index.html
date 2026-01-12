@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimal Flask Blog</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; background-color: #f4f4f4; }
+        .post { background-color: white; border: 1px solid #ddd; padding: 15px; margin-bottom: 20px; border-radius: 5px; }
+        h2 { color: #333; }
+        p { color: #555; }
+        small { color: #999; }
+    </style>
+</head>
+<body>
+    <h1>Welcome to My Flask Blog!</h1>
+    <p>This page displays content retrieved securely from the <strong>SQLite database</strong>.</p>
+
+    {% for post in posts %}
+        <div class="post">
+            <h2>{{ post['title'] }}</h2>
+            <p>{{ post['content'] }}</p>
+            <small>Posted on: {{ post['created'] }}</small>
+        </div>
+    {% endfor %}
+
+    {% if not posts %}
+        <p>No blog posts found.</p>
+    {% endif %}
+
+    <hr>
+    <footer>
+        <small>Powered by Flask and SQLite</small>
+    </footer>
+</body>
+</html>
